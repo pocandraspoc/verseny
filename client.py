@@ -3,6 +3,7 @@ import random
 import webhandler
 import querysolver
 import rpnevaluator
+import traceback
 
 def main():
     """Run client"""
@@ -21,9 +22,16 @@ def main():
         challenge = webhandler.get_challenge(info.cid)
 
         if info.challenge_type == "rpn":
-            handle_rpn(challenge, rpn_evaluator)
+            try:
+                handle_rpn(challenge, rpn_evaluator)
+            except Exception as ex:
+                traceback.print_exc()
         elif info.challenge_type == "query":
-            handle_query(challenge, query_solver)
+            try:
+                handle_query(challenge, query_solver)
+            except Exception as ex:
+                print(ex)
+                traceback.print_exc()
         else:
             print("Unrecognised challenge type '{}'".format(info.challenge_type))
 
