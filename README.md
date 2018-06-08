@@ -1,2 +1,3 @@
 # verseny
 newyork
+push teszt
