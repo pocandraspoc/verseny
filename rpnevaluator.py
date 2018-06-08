@@ -23,4 +23,4 @@ class RpnEvaluator(object):
                 pile.append(operators[e](a, b))
             else:
                 pile.append(int(e))
-        return pile[0]
+        return int(pile[0])
