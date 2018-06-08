@@ -1,4 +1,6 @@
 import webhandler
+from rpnevaluator import RpnEvaluator
+from infix_to_rpn import infix_to_postfix
 
 class QuerySolver(object):
     def __init__(self):
@@ -6,5 +8,7 @@ class QuerySolver(object):
 
     def answer_query(self, query):
         """Answer a query"""
-        # TODO: add your code here
-        return 85
+        print(query)
+        tokens = query.split(' ')
+        postfix = infix_to_postfix(tokens)
+        return RpnEvaluator().evaluate_rpn(' '.join(postfix))
