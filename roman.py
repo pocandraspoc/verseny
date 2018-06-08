@@ -13,6 +13,15 @@ letterValues = {
     'I': 1
 }
 
+ROMAN_NUMERAL_TABLE = [
+    ("M", 1000), ("CM", 900), ("D", 500),
+    ("CD", 400), ("C", 100),  ("XC", 90),
+    ("L", 50),   ("XL", 40),  ("X", 10),
+    ("IX", 9),   ("V", 5),    ("IV", 4),
+    ("I", 1)
+]
+
+
 def value_of_roman_letter(ch):
     """Return the value associated with a single Roman numeral letter."""
     try:
@@ -38,6 +47,16 @@ def int_from_roman_numeral(s):
             result += value
         lastValue = value
     return result
+
+
+def int_to_roman_numberal(number):
+    roman_numerals = []
+    for numeral, value in ROMAN_NUMERAL_TABLE:
+        while value <= number:
+            number -= value
+            roman_numerals.append(numeral)
+
+    return ''.join(roman_numerals)
 
 
 def convert_to_int(roman_numeral):
